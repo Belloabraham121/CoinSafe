@@ -25,14 +25,7 @@ const Home = () => {
         {isConnected && (
           <>
             <div className="sm:flex  gap-3 pt-3">
-            <CredScoreCard
-                title="Rewards"
-                value={5800000}
-                unit="points"
-                badge="1.2x"
-                emphasize="find out"
-                text="how points will be used"
-              />
+              <CredScoreCard />
               <Card
                 title="Rewards"
                 value={5800000}
