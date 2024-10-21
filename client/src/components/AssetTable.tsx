@@ -17,6 +17,7 @@ import { useAccount, useReadContract } from "wagmi";
 // import { parseUnits } from "viem";
 import { CoinSafeContract } from "@/lib/contract";
 import { useEffect, useState } from "react";
+import { formatEther } from "viem";
 
 export default function AssetTable() {
   const [assetData, setAssetData] = useState([]);
@@ -59,7 +60,7 @@ export default function AssetTable() {
     const result = assets[0]?.map((key: any, index: string | number) => {
       return {
         token: key,
-        balance: Number(assets[1][index]),
+        balance: formatEther(assets[1][index]),
       };
     });
 
@@ -81,22 +82,26 @@ export default function AssetTable() {
           <TabsList className="sm:flex space-x-4 hidden bg-[#1E1E1E99] rounded-[2rem] p-2 mb-4">
             <TabsTrigger
               value="all-assets"
-              className="text-white px-4 py-2 rounded-full">
+              className="text-white px-4 py-2 rounded-full"
+            >
               All assets
             </TabsTrigger>
             <TabsTrigger
               value="liquid-assets"
-              className="text-white px-4 py-2 rounded-full">
+              className="text-white px-4 py-2 rounded-full"
+            >
               Liquid assets
             </TabsTrigger>
             <TabsTrigger
               value="staked-assets"
-              className="text-white px-4 py-2 rounded-full">
+              className="text-white px-4 py-2 rounded-full"
+            >
               Staked assets
             </TabsTrigger>
             <TabsTrigger
               value="saved-assets"
-              className="text-white px-4 py-2 rounded-full">
+              className="text-white px-4 py-2 rounded-full"
+            >
               Saved assets
             </TabsTrigger>
           </TabsList>
@@ -153,7 +158,8 @@ function AssetTableContent({ assets }: { assets: any[] }) {
             {assets.map((asset, index) => (
               <TableRow
                 key={index}
-                className="w-full flex flex-col sm:table-row">
+                className="w-full flex flex-col sm:table-row"
+              >
                 {/* Ticker */}
                 <TableCell className="w-full sm:w-1/3">
                   <div className="flex items-center space-x-4">
